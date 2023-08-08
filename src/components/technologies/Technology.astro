@@ -1,0 +1,16 @@
+---
+const {displayName, file} = Astro.props;
+const source = `technologies/${file.toLowerCase()}.png`;
+---
+
+<div class="flex flex-col gap-1 items-center justify-center">
+    <div class="technology flex flex-col gap-1 items-center">
+        <img draggable="false"
+             height="48px"
+             width="48px"
+             src={source}
+             alt={displayName}
+             title={displayName}/>
+        <h4 class="font-bold text-sm">{displayName}</h4>
+    </div>
+</div>
