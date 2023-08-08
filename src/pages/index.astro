@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Navbar from '../components/navbar/Navbar.astro';
 import Technology from '../components/technologies/Technology.astro';
+import {Image} from 'astro:assets';
 import {SITE_TITLE, SITE_DESCRIPTION, JOB, FAVOURITE_BAND} from '../consts';
 
 const today = new Date();
@@ -12,6 +13,24 @@ let age = today.getFullYear() - year;
 if (currentMonth < month || (currentMonth === month && today.getDate() < day)) {
     age--;
 }
+
+import avatarImage from '../assets/avatar.png'
+import goImage from '../assets/technologies/go.png';
+import nodeImage from '../assets/technologies/node.png';
+import phpImage from '../assets/technologies/php.png';
+import reactImage from '../assets/technologies/react.png';
+import vueImage from '../assets/technologies/vue.png';
+import typescriptImage from '../assets/technologies/typescript.png';
+import htmlImage from '../assets/technologies/html.png';
+import cssImage from '../assets/technologies/css.png';
+import tailwindImage from '../assets/technologies/tailwind.png';
+import mysqlImage from '../assets/technologies/mysql.png';
+import redisImage from '../assets/technologies/redis.png';
+import dockerImage from '../assets/technologies/docker.png';
+import intellijImage from '../assets/technologies/intellij.png';
+import gitImage from '../assets/technologies/git.png';
+import githubImage from '../assets/technologies/github.png';
+
 ---
 
 <!DOCTYPE html>
@@ -27,7 +46,7 @@ if (currentMonth < month || (currentMonth === month && today.getDate() < day)) {
         <div class="flex large:flex-row small:flex-col items-center large:w-full small:gap-5 large:gap-0">
             <div class="large:ml-5 small:mt-5 large:mt-0 flex flex-col justify-between background rounded-lg flex-shrink-0 large:h-full large:w-auto small:w-full shadow-lg shadow-black z-10">
                 <div class="flex flex-col items-center rounded-lg mb-5">
-                    <img class="max-w-xs w-max rounded-lg" src="/avatar.png" alt="Geri's avatar"/>
+                    <Image class="max-w-xs w-max rounded-lg" src={avatarImage} alt="Geri's avatar"/>
                     <h1 class="text-2xl font-bold">Gergely Kun (Geri)</h1>
                     <h3 class="text-sm accent">Developer & Linux SysAdmin</h3>
                 </div>
@@ -71,21 +90,21 @@ if (currentMonth < month || (currentMonth === month && today.getDate() < day)) {
                     <h1 class="text-2xl font-bold">Technologies</h1>
                     <p>Here is my current stack for various web development and other side projects:</p>
                     <div class="mt-5 mb-10 grid grid-cols-5 gap-x-5 gap-y-5">
-                        <Technology displayName="GoLang" file="go"/>
-                        <Technology displayName="Node.js" file="node"/>
-                        <Technology displayName="PHP" file="php"/>
-                        <Technology displayName="React.js" file="react"/>
-                        <Technology displayName="Vue.js" file="vue"/>
-                        <Technology displayName="TypeScript" file="typescript"/>
-                        <Technology displayName="HTML" file="html"/>
-                        <Technology displayName="CSS" file="css"/>
-                        <Technology displayName="Tailwind" file="tailwind"/>
-                        <Technology displayName="MySQL" file="mysql"/>
-                        <Technology displayName="redis" file="redis"/>
-                        <Technology displayName="Docker" file="docker"/>
-                        <Technology displayName="IntelliJ" file="intellij"/>
-                        <Technology displayName="Git" file="git"/>
-                        <Technology displayName="GitHub" file="github"/>
+                        <Technology display="GoLang" image={goImage}/>
+                        <Technology display="Node.js" image={nodeImage}/>
+                        <Technology display="PHP" image={phpImage}/>
+                        <Technology display="React.js" image={reactImage}/>
+                        <Technology display="Vue.js" image={vueImage}/>
+                        <Technology display="TypeScript" image={typescriptImage}/>
+                        <Technology display="HTML" image={htmlImage}/>
+                        <Technology display="CSS" image={cssImage}/>
+                        <Technology display="Tailwind" image={tailwindImage}/>
+                        <Technology display="MySQL" image={mysqlImage}/>
+                        <Technology display="redis" image={redisImage}/>
+                        <Technology display="Docker" image={dockerImage}/>
+                        <Technology display="IntelliJ" image={intellijImage}/>
+                        <Technology display="Git" image={gitImage}/>
+                        <Technology display="GitHub" image={githubImage}/>
                     </div>
                     <a href="/technologies" class="text-center">
                         <i class="fa-solid fa-up-right-from-square"></i>
