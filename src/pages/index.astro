@@ -1,19 +1,4 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Navbar from '../components/navbar/Navbar.astro';
-import Technology from '../components/technologies/Technology.astro';
-import {Image} from 'astro:assets';
-import {SITE_TITLE, SITE_DESCRIPTION, JOB, FAVOURITE_BAND} from '../consts';
-
-const today = new Date();
-const currentMonth = today.getMonth() + 1;
-const currentYear = today.getFullYear();
-const [year, month, day] = [2003, 5, 6];
-let age = today.getFullYear() - year;
-if (currentMonth < month || (currentMonth === month && today.getDate() < day)) {
-    age--;
-}
-
 import avatarImage from '../assets/avatar.png'
 import goImage from '../assets/technologies/go.png';
 import nodeImage from '../assets/technologies/node.png';
@@ -31,6 +16,22 @@ import intellijImage from '../assets/technologies/intellij.png';
 import gitImage from '../assets/technologies/git.png';
 import githubImage from '../assets/technologies/github.png';
 
+import BaseHead from '../components/misc/Head.astro';
+import Navbar from '../components/navbar/Navbar.astro';
+import Technology from '../components/technologies/Technology.astro';
+
+import {SITE_TITLE, SITE_DESCRIPTION, JOB, FAVOURITE_BAND} from '../consts';
+
+import {Image} from 'astro:assets';
+
+const today = new Date();
+const currentMonth = today.getMonth() + 1;
+const currentYear = today.getFullYear();
+const [year, month, day] = [2003, 5, 6];
+let age = today.getFullYear() - year;
+if (currentMonth < month || (currentMonth === month && today.getDate() < day)) {
+    age--;
+}
 ---
 
 <!DOCTYPE html>

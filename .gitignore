@@ -3,6 +3,7 @@ dist/
 
 # generated types
 .astro/
+public/fontawesome.js
 
 # dependencies
 node_modules/
