@@ -86,13 +86,13 @@ strong, b {
 a {
     cursor: pointer;
     text-decoration: underline;
-    color: var(--accent);
+    color: var(--cls-4);
 }
 
 a:focus,
 a:hover,
 .active {
-    color: var(--accent-dark);
+    color: var(--accent);
 }
 
 p {
