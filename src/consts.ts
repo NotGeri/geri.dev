@@ -1,3 +1,4 @@
+export const SITE_ENDPOINT = 'https://new.geri.dev';
 export const SITE_TITLE = 'Geri\'s Hideout';
 export const SITE_DESCRIPTION = '';
 export const LINKEDIN = 'https://linkedin.com/in/gergelykun/';

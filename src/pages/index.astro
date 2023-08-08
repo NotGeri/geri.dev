@@ -16,11 +16,11 @@ import intellijImage from '../assets/technologies/intellij.png';
 import gitImage from '../assets/technologies/git.png';
 import githubImage from '../assets/technologies/github.png';
 
-import BaseHead from '../components/misc/Head.astro';
+import BaseHead from '../components/misc/BaseHead.astro';
 import Navbar from '../components/navbar/Navbar.astro';
 import Technology from '../components/technologies/Technology.astro';
 
-import {SITE_TITLE, SITE_DESCRIPTION, JOB, FAVOURITE_BAND} from '../consts';
+import {SITE_TITLE, JOB, FAVOURITE_BAND} from '../consts';
 
 import {Image} from 'astro:assets';
 
@@ -37,7 +37,7 @@ if (currentMonth < month || (currentMonth === month && today.getDate() < day)) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
+    <BaseHead title="Home" description="Take a look at my corner of the internet! Learn more about me and what I do or get in touch!"/>
 </head>
 <body>
 <main class="flex flex-col large:justify-center items-center h-full">
