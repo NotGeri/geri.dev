@@ -20,9 +20,10 @@ import BaseHead from '../components/misc/BaseHead.astro';
 import Navbar from '../components/navbar/Navbar.astro';
 import Technology from '../components/technologies/Technology.astro';
 
-import {SITE_TITLE, JOB, FAVOURITE_BAND} from '../consts';
+import {SITE_TITLE, JOB, FAVOURITE_BAND, GITHUB, LINKEDIN, DISCORD_INVITE, EMAIL} from '../consts';
 
 import {Image} from 'astro:assets';
+import Item from "../components/navbar/Item.astro";
 
 const today = new Date();
 const currentMonth = today.getMonth() + 1;
@@ -41,15 +42,22 @@ if (currentMonth < month || (currentMonth === month && today.getDate() < day)) {
 </head>
 <body>
 <main class="flex flex-col large:justify-center items-center h-full">
-    <div class="flex large:flex-row small:flex-col h-196">
+    <div class="flex large:flex-row small:flex-col max-h-196">
         <Navbar title={SITE_TITLE}/>
 
         <div class="flex large:flex-row small:flex-col items-center large:w-full small:gap-5 large:gap-0">
             <div class="large:ml-5 small:mt-5 large:mt-0 flex flex-col justify-between background rounded-lg flex-shrink-0 large:h-full large:w-auto small:w-full shadow-lg shadow-black z-10">
-                <div class="flex flex-col items-center rounded-lg mb-5">
+                <div class="flex flex-col items-center rounded-lg mb-5 small:mt-5 large:mt-0">
                     <Image class="max-w-xs w-max rounded-lg" src={avatarImage} alt="Geri's avatar" loading="eager"/>
-                    <h1 class="text-2xl font-bold">Gergely Kun (Geri)</h1>
-                    <h3 class="text-sm accent">Developer & Linux SysAdmin</h3>
+                    <h1 class="text-2xl font-bold mb-3">Gergely Kun (Geri)</h1>
+                    <h3 class="text-sm accent mb-5">Developer & Linux SysAdmin</h3>
+                    <div class="flex flex-row gap-5">
+                        <Item class="fa-brands fa-github" href={GITHUB}/>
+                        <Item class="fa-brands fa-linkedin" href={LINKEDIN}/>
+                        <Item class="fa-brands fa-discord" href={DISCORD_INVITE}/>
+                        <Item class="fa-solid fa-envelope" href={`mailto:${EMAIL}`}/>
+                    </div>
+                    <span class="text-clamp bg-white text-white">Please help me decide what to put here</span>
                 </div>
                 <div class="flex flex-col justify-center">
                     <div class="flex flex-row justify-around mb-5">
@@ -58,15 +66,15 @@ if (currentMonth < month || (currentMonth === month && today.getDate() < day)) {
                             Download CV
                         </a>
                         <a href="/contact" class="text-sm">
-                            <i class="fa-solid fa-handshake-simple"></i>
-                            Contact Me
+                            <i class="fa-solid fa-list-check"></i>
+                            View Projects
                         </a>
                     </div>
                     <span class="text-xs text-center mb-5">© geri.dev - {currentYear}</span>
                 </div>
             </div>
 
-            <div class="background flex flex-col gap-2 h-128 w-full p-5
+            <div class="background flex flex-col gap-2 large:max-h-128 w-full large:max-w-3xl p-5
                 small:rounded-tl-lg large:rounded-tl-none small:rounded-bl-lg large:rounded-bl-none
                 rounded-tr-lg rounded-br-lg shadow-lg shadow-black text-clamp">
                 <div>

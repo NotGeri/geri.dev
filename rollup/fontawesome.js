@@ -2,8 +2,10 @@ import {dom, library} from '@fortawesome/fontawesome-svg-core';
 import {
     faBlog,
     faDownload,
+    faEnvelope,
     faFile,
     faHandshakeSimple,
+    faListCheck,
     faServer,
     faUpRightFromSquare,
     faUser,
@@ -11,7 +13,7 @@ import {
 
 import {faDiscord, faGithub, faLinkedin} from '@fortawesome/free-brands-svg-icons';
 
-library.add(faDownload, faUser, faBlog, faServer, faFile, faHandshakeSimple, faDownload, faUpRightFromSquare);
+library.add(faDownload, faUser, faBlog, faServer, faFile, faHandshakeSimple, faDownload, faUpRightFromSquare, faEnvelope, faListCheck);
 library.add(faGithub, faDiscord, faLinkedin);
 
 window.addEventListener('DOMContentLoaded', () => {
