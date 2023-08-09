@@ -20,7 +20,7 @@ const currentYear = new Date().getFullYear();
             <div class="large:ml-5 small:mt-5 large:mt-0 flex flex-col justify-between background rounded-lg flex-shrink-0 large:h-full large:w-auto small:w-full shadow-lg shadow-black z-10">
                 <div class="flex flex-col items-center rounded-lg mb-5 small:mt-5 large:mt-0">
                     <Image class="max-w-xs w-max rounded-lg" src={image} alt="Geri's avatar" loading="eager"/>
-                    <slot name="sidebar-head" />
+                    <slot name="sidebar-head"/>
                 </div>
                 <div class="flex flex-col justify-center">
                     <slot name="sidebar-foot"/>
@@ -28,7 +28,11 @@ const currentYear = new Date().getFullYear();
                 </div>
             </div>
 
-            <slot name="main"/>
+            <div class="background flex flex-col gap-2 large:max-h-128 w-full large:max-w-3xl p-5
+                small:rounded-tl-lg large:rounded-tl-none small:rounded-bl-lg large:rounded-bl-none
+                rounded-tr-lg rounded-br-lg shadow-lg shadow-black text-clamp">
+                <slot name="main"/>
+            </div>
         </div>
     </div>
 </main>

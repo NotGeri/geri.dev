@@ -50,6 +50,14 @@ main {
     background: white;
 }
 
+.background-accent {
+    background: var(--accent);
+}
+
+.background-accent-dark {
+    background: var(--accent-dark);
+}
+
 h1, h2, h3, h4, h5, h6 {
     margin: 0 0 0.5rem 0;
     line-height: 1.2;
@@ -120,4 +128,16 @@ p {
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
+}
+
+@tailwind base;
+@layer base {
+    .button {
+        @apply background-accent text-white rounded-xl p-1.5 whitespace-nowrap text-clamp;
+    }
+
+    .button:focus,
+    .button:hover {
+        @apply background-accent-dark;
+    }
 }

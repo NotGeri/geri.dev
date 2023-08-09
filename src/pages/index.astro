@@ -18,7 +18,7 @@ import githubImage from '../assets/technologies/github.png';
 
 import Base from '../layouts/Base.astro';
 import Item from '../components/navbar/Item.astro';
-import Technology from '../components/technologies/Technology.astro';
+import Technology from '../components/misc/Technology.astro';
 import {DISCORD_INVITE, EMAIL, FAVOURITE_BAND, GITHUB, JOB, LINKEDIN} from '../consts';
 
 const today = new Date();
@@ -59,9 +59,7 @@ if (currentMonth < month || (currentMonth === month && today.getDate() < day)) {
     </div>
 </div>
 
-<div slot="main" class="background flex flex-col gap-2 large:max-h-128 w-full large:max-w-3xl p-5
-                small:rounded-tl-lg large:rounded-tl-none small:rounded-bl-lg large:rounded-bl-none
-                rounded-tr-lg rounded-br-lg shadow-lg shadow-black text-clamp">
+<div slot="main">
     <div>
         <h1 class="text-2xl font-bold">✨ About Me</h1>
         <p class="mb-1">

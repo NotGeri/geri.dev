@@ -1,0 +1,32 @@
+---
+import {Image} from 'astro:assets';
+const {id, name, image, from, to, info, download} = Astro.props;
+---
+
+<div class="flex flex-col items-center">
+    {image ? <Image src={image}
+           alt={`${name}'s icon`}
+           draggable="false"
+           height="128px"
+           width="128px"/> : <i class="text-9xl text-black fa-solid fa-question"></i>}
+
+    <h2 class="text-2xl whitespace-nowrap">{name}</h2>
+    {from || to ? <p class="mb-1 text-xs">{from ?? '?'} - {to || '?'}</p> : <div></div>}
+
+    <slot class="mb-1"/>
+
+    <div class="flex flex-row gap-1">
+        {info == null || info ?
+        <a href={`/archives/${id}`} class="button">
+            <i class="fa-solid fa-image"></i>
+            Info
+        </a> : <span></span>}
+
+        {download == null || download ?
+        <a href={download} class="button">
+            <i class="fa-solid fa-download"></i>
+            Download
+        </a> : <span></span>}
+    </div>
+
+</div>

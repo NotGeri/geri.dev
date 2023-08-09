@@ -1,0 +1,58 @@
+---
+import avatarImage from '../assets/avatar.png'
+import stormholdImage from '../assets/servers/stormhold.png';
+import stormholdNewEraImage from '../assets/servers/stormhold-newera.png';
+import aramoreImage from '../assets/servers/aramore.png';
+import Base from '../layouts/Base.astro';
+import Server from '../components/misc/Server.astro';
+---
+
+<Base title="Server Archives"
+      description="A list of my previous Minecraft servers with some information and downloads!"
+      image={avatarImage}>
+
+<div slot="sidebar-head">
+    <div class="w-72 flex flex-col items-center text-clamp">
+        <h1 class="text-2xl font-bold mb-3">Server Archives</h1>
+        <p class="mb-2">Here you can find some of my previous Minecraft server projects.</p>
+        <p class="mb-2">Feel free to download and use them however you see fit!</p>
+        <p class="mb-2">Please make sure to incrementally update them from their original version to prevent any world
+            corruption.</p>
+        <p class="mb-2">Let me know if you have any questions or concerns!</p>
+        <a class="button">
+            <i class="fa-solid fa-handshake-simple"></i>
+            Contact Me
+        </a>
+    </div>
+</div>
+
+<div slot="main">
+    <div class="text-center">
+        <h1 class="text-3xl whitespace-nowrap">Recent Servers</h1>
+        <p class="text-clamp">These are my most recent server projects.</p>
+        <p class="text-clamp">You can find out more about each with the buttons below.</p>
+    </div>
+    <div class="grid small:grid-cols-1 large:grid-cols-2 vlarge:grid-cols-3 gap-3 justify-center items-center">
+        <Server id="stormhold"
+                name="Stormhold"
+                image={stormholdImage}
+                from="2019 October"
+                to="2020 May"
+                download="https://archive.geri.dev/stormhold.zip"/>
+        <Server id="new-era"
+                name="Stormhold New-Era" image={stormholdNewEraImage}
+                from="2020 May"
+                to="2020 August"
+                download="https://archive.geri.dev/newera.zip"/>
+        <Server id="aramore"
+                name="Aramore"
+                image={aramoreImage}
+                to="2020 October"
+                download="https://archive.geri.dev/aramore.zip"/>
+        <Server name="Older" image={null} info={false} download={false}>
+            <span class="text-clamp">Hopefully soon!</span>
+        </Server>
+    </div>
+</div>
+
+</Base>
