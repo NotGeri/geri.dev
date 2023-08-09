@@ -16,18 +16,13 @@ import intellijImage from '../assets/technologies/intellij.png';
 import gitImage from '../assets/technologies/git.png';
 import githubImage from '../assets/technologies/github.png';
 
-import BaseHead from '../components/misc/BaseHead.astro';
-import Navbar from '../components/navbar/Navbar.astro';
+import Base from '../layouts/Base.astro';
+import Item from '../components/navbar/Item.astro';
 import Technology from '../components/technologies/Technology.astro';
-
-import {SITE_TITLE, JOB, FAVOURITE_BAND, GITHUB, LINKEDIN, DISCORD_INVITE, EMAIL} from '../consts';
-
-import {Image} from 'astro:assets';
-import Item from "../components/navbar/Item.astro";
+import {DISCORD_INVITE, EMAIL, FAVOURITE_BAND, GITHUB, JOB, LINKEDIN} from '../consts';
 
 const today = new Date();
 const currentMonth = today.getMonth() + 1;
-const currentYear = today.getFullYear();
 const [year, month, day] = [2003, 5, 6];
 let age = today.getFullYear() - year;
 if (currentMonth < month || (currentMonth === month && today.getDate() < day)) {
@@ -35,94 +30,81 @@ if (currentMonth < month || (currentMonth === month && today.getDate() < day)) {
 }
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <BaseHead title="Home" description="Take a look at my corner of the internet! Learn more about me and what I do or get in touch!"/>
-</head>
-<body>
-<main class="flex flex-col large:justify-center items-center h-full">
-    <div class="flex large:flex-row small:flex-col max-h-196">
-        <Navbar title={SITE_TITLE}/>
+<Base title="Home"
+      description="Take a look at my corner of the internet! Learn more about me and what I do or get in touch!"
+      image={avatarImage}>
 
-        <div class="flex large:flex-row small:flex-col items-center large:w-full small:gap-5 large:gap-0">
-            <div class="large:ml-5 small:mt-5 large:mt-0 flex flex-col justify-between background rounded-lg flex-shrink-0 large:h-full large:w-auto small:w-full shadow-lg shadow-black z-10">
-                <div class="flex flex-col items-center rounded-lg mb-5 small:mt-5 large:mt-0">
-                    <Image class="max-w-xs w-max rounded-lg" src={avatarImage} alt="Geri's avatar" loading="eager"/>
-                    <h1 class="text-2xl font-bold mb-3">Gergely Kun (Geri)</h1>
-                    <h3 class="text-sm accent mb-5">Developer & Linux SysAdmin</h3>
-                    <div class="flex flex-row gap-5">
-                        <Item class="fa-brands fa-github" href={GITHUB}/>
-                        <Item class="fa-brands fa-linkedin" href={LINKEDIN}/>
-                        <Item class="fa-brands fa-discord" href={DISCORD_INVITE}/>
-                        <Item class="fa-solid fa-envelope" href={`mailto:${EMAIL}`}/>
-                    </div>
-                    <span class="text-clamp bg-white text-white">Please help me decide what to put here</span>
-                </div>
-                <div class="flex flex-col justify-center">
-                    <div class="flex flex-row justify-around mb-5">
-                        <a href="/cv" class="text-sm">
-                            <i class="fa-solid fa-download"></i>
-                            Download CV
-                        </a>
-                        <a href="/contact" class="text-sm">
-                            <i class="fa-solid fa-list-check"></i>
-                            View Projects
-                        </a>
-                    </div>
-                    <span class="text-xs text-center mb-5">© geri.dev - {currentYear}</span>
-                </div>
-            </div>
+<div slot="sidebar-head" class="flex flex-col justify-center items-center text-center">
+    <h1 class="text-2xl font-bold mb-3">Gergely Kun (Geri)</h1>
+    <h3 class="text-sm accent mb-5">Developer & Linux SysAdmin</h3>
+    <div class="flex flex-row gap-5">
+        <Item class="fa-brands fa-github" href={GITHUB}/>
+        <Item class="fa-brands fa-linkedin" href={LINKEDIN}/>
+        <Item class="fa-brands fa-discord" href={DISCORD_INVITE}/>
+        <Item class="fa-solid fa-envelope" href={`mailto:${EMAIL}`}/>
+    </div>
+    <span class="text-clamp bg-white text-white">Please help me decide what to put here</span>
+</div>
 
-            <div class="background flex flex-col gap-2 large:max-h-128 w-full large:max-w-3xl p-5
+<div slot="sidebar-foot">
+    <div class="flex flex-row justify-around mb-5">
+        <a href="/cv" class="text-sm">
+            <i class="fa-solid fa-download"></i>
+            Download CV
+        </a>
+        <a href="/contact" class="text-sm">
+            <i class="fa-solid fa-list-check"></i>
+            View Projects
+        </a>
+    </div>
+</div>
+
+<div slot="main" class="background flex flex-col gap-2 large:max-h-128 w-full large:max-w-3xl p-5
                 small:rounded-tl-lg large:rounded-tl-none small:rounded-bl-lg large:rounded-bl-none
                 rounded-tr-lg rounded-br-lg shadow-lg shadow-black text-clamp">
-                <div>
-                    <h1 class="text-2xl font-bold">✨ About Me</h1>
-                    <p class="mb-1">
-                        I'm a self-taught {age} year old Hungarian software developer
-                        and Linux system administrator.
-                    </p>
-                    <p class="mb-1">
-                        I currently work as a <span class="font-bold">{JOB.ROLE}</span>
-                        at <a href={JOB.COMPANY.LINK} class="font-bold company-name">{JOB.COMPANY.NAME}</a>.
-                    </p>
-                    <p class="mb-1">
-                        In my free time I listen to metal bands such as
-                        <a href={FAVOURITE_BAND.LINK} class="font-bold band-name">{FAVOURITE_BAND.NAME}</a>
-                        and create side projects alone and with friends!
-                    </p>
-                    <p>Looking for freelancing work!</p>
-                </div>
-
-                <div class="flex flex-col justify-center">
-                    <h1 class="text-2xl font-bold">Technologies</h1>
-                    <p>Here is my current stack for various web development and other side projects:</p>
-                    <div class="mt-5 mb-10 grid grid-cols-5 gap-x-5 gap-y-5">
-                        <Technology display="GoLang" image={goImage}/>
-                        <Technology display="Node.js" image={nodeImage}/>
-                        <Technology display="PHP" image={phpImage}/>
-                        <Technology display="React.js" image={reactImage}/>
-                        <Technology display="Vue.js" image={vueImage}/>
-                        <Technology display="TypeScript" image={typescriptImage}/>
-                        <Technology display="HTML" image={htmlImage}/>
-                        <Technology display="CSS" image={cssImage}/>
-                        <Technology display="Tailwind" image={tailwindImage}/>
-                        <Technology display="MySQL" image={mysqlImage}/>
-                        <Technology display="redis" image={redisImage}/>
-                        <Technology display="Docker" image={dockerImage}/>
-                        <Technology display="IntelliJ" image={intellijImage}/>
-                        <Technology display="Git" image={gitImage}/>
-                        <Technology display="GitHub" image={githubImage}/>
-                    </div>
-                    <a href="/technologies" class="text-center">
-                        <i class="fa-solid fa-up-right-from-square"></i>
-                        All technologies & projects
-                    </a>
-                </div>
-            </div>
-        </div>
+    <div>
+        <h1 class="text-2xl font-bold">✨ About Me</h1>
+        <p class="mb-1">
+            I'm a self-taught {age} year old Hungarian software developer
+            and Linux system administrator.
+        </p>
+        <p class="mb-1">
+            I currently work as a <span class="font-bold">{JOB.ROLE}</span>
+            at <a href={JOB.COMPANY.LINK} class="font-bold company-name">{JOB.COMPANY.NAME}</a>.
+        </p>
+        <p class="mb-1">
+            In my free time I listen to metal bands such as
+            <a href={FAVOURITE_BAND.LINK} class="font-bold band-name">{FAVOURITE_BAND.NAME}</a>
+            and create side projects alone and with friends!
+        </p>
+        <p>Looking for freelancing work!</p>
     </div>
-</main>
-</body>
-</html>
+
+    <div class="flex flex-col justify-center">
+        <h1 class="text-2xl font-bold">Technologies</h1>
+        <p>Here is my current stack for various web development and other side projects:</p>
+        <div class="mt-5 mb-10 grid grid-cols-5 gap-x-5 gap-y-5">
+            <Technology display="GoLang" image={goImage}/>
+            <Technology display="Node.js" image={nodeImage}/>
+            <Technology display="PHP" image={phpImage}/>
+            <Technology display="React.js" image={reactImage}/>
+            <Technology display="Vue.js" image={vueImage}/>
+            <Technology display="TypeScript" image={typescriptImage}/>
+            <Technology display="HTML" image={htmlImage}/>
+            <Technology display="CSS" image={cssImage}/>
+            <Technology display="Tailwind" image={tailwindImage}/>
+            <Technology display="MySQL" image={mysqlImage}/>
+            <Technology display="redis" image={redisImage}/>
+            <Technology display="Docker" image={dockerImage}/>
+            <Technology display="IntelliJ" image={intellijImage}/>
+            <Technology display="Git" image={gitImage}/>
+            <Technology display="GitHub" image={githubImage}/>
+        </div>
+        <a href="/technologies" class="text-center">
+            <i class="fa-solid fa-up-right-from-square"></i>
+            All technologies & projects
+        </a>
+    </div>
+</div>
+
+</Base>
