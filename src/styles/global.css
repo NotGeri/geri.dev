@@ -140,4 +140,8 @@ p {
     .button:hover {
         @apply background-accent-dark;
     }
+
+    .disabled {
+        @apply background-accent-dark cursor-not-allowed;
+    }
 }

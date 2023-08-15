@@ -1,6 +1,6 @@
 ---
 import {Image} from 'astro:assets';
-const {id, name, image, from, to, info, download} = Astro.props;
+const {id, name, image, from, to, info, infoDisabled, download} = Astro.props;
 ---
 
 <div class="flex flex-col items-center">
@@ -16,11 +16,13 @@ const {id, name, image, from, to, info, download} = Astro.props;
     <slot class="mb-1"/>
 
     <div class="flex flex-row gap-1">
-        {info == null || info ?
-        <a href={`/archives/${id}`} class="button">
-            <i class="fa-solid fa-image"></i>
-            Info
-        </a> : <span></span>}
+        {info ?
+            !infoDisabled ? <a href={`/archives/${id}`} class="button">
+                <i class="fa-solid fa-image"></i> Info
+            </a> : <span class="button disabled">
+                <i class="fa-solid fa-image"></i> Info
+            </span>
+        : <></>}
 
         {download == null || download ?
         <a href={download} class="button">

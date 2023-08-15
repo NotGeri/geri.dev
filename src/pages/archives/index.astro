@@ -1,10 +1,11 @@
 ---
-import avatarImage from '../assets/avatar.png'
-import stormholdImage from '../assets/servers/stormhold.png';
-import stormholdNewEraImage from '../assets/servers/stormhold-newera.png';
-import aramoreImage from '../assets/servers/aramore.png';
-import Base from '../layouts/Base.astro';
-import Server from '../components/misc/Server.astro';
+import avatarImage from '../../assets/avatar.png'
+import stormholdImage from '../../assets/servers/stormhold.png';
+import stormholdNewEraImage from '../../assets/servers/new-era.png';
+import aramoreImage from '../../assets/servers/aramore.png';
+import brightsideImage from '../../assets/servers/brightside.png';
+import Base from '../../layouts/Base.astro';
+import Server from '../../components/misc/Server.astro';
 ---
 
 <Base title="Server Archives"
@@ -38,17 +39,30 @@ import Server from '../components/misc/Server.astro';
                 image={stormholdImage}
                 from="2019 October"
                 to="2020 May"
+                info={true}
+                infoDisabled={true}
                 download="https://archive.geri.dev/stormhold.zip"/>
         <Server id="new-era"
-                name="Stormhold New-Era" image={stormholdNewEraImage}
+                name="Stormhold New-Era"
+                image={stormholdNewEraImage}
                 from="2020 May"
                 to="2020 August"
+                info={true}
+                infoDisabled={true}
                 download="https://archive.geri.dev/newera.zip"/>
         <Server id="aramore"
                 name="Aramore"
                 image={aramoreImage}
                 to="2020 October"
+                info={true}
+                infoDisabled={true}
                 download="https://archive.geri.dev/aramore.zip"/>
+        <Server id="brightside"
+                name="Brightside"
+                image={brightsideImage}
+                info={true}
+                infoDisabled={true}
+                download="https://archive.geri.dev/brightside.zip"/>
         <Server name="Older" image={null} info={false} download={false}>
             <span class="text-clamp">Hopefully soon!</span>
         </Server>

@@ -1,0 +1,46 @@
+---
+import BaseHead from '../components/misc/BaseHead.astro';
+import Navbar from '../components/navbar/Navbar.astro';
+import {Image} from 'astro:assets';
+const {title, description, image, imageHeight, imageWidth} = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <BaseHead title={title} description={description}/>
+</head>
+<body>
+<main class="flex flex-col large:justify-center items-center mt-5 mb-5">
+    <div class="flex large:flex-row small:flex-col">
+        <div class="max-h-196">
+            <Navbar/>
+        </div>
+
+        <div class="small:mt-5 large:mt-0 large:ml-5 background h-full">
+
+            <div class="flex flex-col items-center rounded-lg mb-5 small:mt-5 large:mt-0">
+                <div class="flex flex-row w-196">
+                    <div class="flex flex-col items-center p-5">
+                        <Image class="rounded-lg"
+                               src={image}
+                               alt={title}
+                               height={imageHeight ?? '256px'}
+                               width={imageWidth ?? '256px'}
+                               loading="eager"/>
+                        <slot name="left"/>
+                    </div>
+                    <div class="p-5">
+                        <slot name="right"/>
+                    </div>
+                </div>
+            </div>
+
+            <!--<span class="text-xs text-center">© geri.dev - {currentYear}</span>-->
+
+        </div>
+    </div>
+</main>
+</body>
+</html>
