@@ -1,0 +1,35 @@
+---
+import avatarImage from '../assets/avatar.png'
+import Base from '../layouts/Base.astro';
+---
+
+<script>
+    function newDuck() {
+        const duck = document.getElementById('duck');
+        if (!duck) return;
+        duck.src = `https://random-d.uk/api/randomimg?random=${Math.random()}`;
+    }
+
+    document.getElementById('new-duck')?.addEventListener('click', newDuck);
+</script>
+
+<Base title="Not Found"
+      description="The requested page could not be found."
+      image={avatarImage}>
+
+<div slot="sidebar-head" class="w-72">
+    <h1 class="text-2xl font-bold mb-3 text-center">Page Not Found</h1>
+    <p class="mb-1 text-clamp">The page you were looking for could not be found.</p>
+    <p class="text-clamp">Instead, here is a lovely duck.</p>
+</div>
+
+<div slot="main" class="flex flex-col items-center">
+    <img id="duck" class="mb-3" height="256" width="256" alt="A random but lovely duck"
+         src="https://random-d.uk/api/randomimg"/>
+    <button class="button" id="new-duck">
+        <i class="fa-solid fa-rotate-right"></i>
+        New Duck
+    </button>
+</div>
+
+</Base>
