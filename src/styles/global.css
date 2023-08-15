@@ -50,6 +50,10 @@ main {
     background: white;
 }
 
+.background-dark {
+    background: var(--cls-4);
+}
+
 .background-accent {
     background: var(--accent);
 }
@@ -98,8 +102,7 @@ a {
 }
 
 a:focus,
-a:hover,
-.active {
+a:hover {
     color: var(--accent);
 }
 
@@ -143,5 +146,8 @@ p {
 
     .disabled {
         @apply background-accent-dark cursor-not-allowed;
+
+    code, pre {
+        @apply background-dark p-1 rounded text-white;
     }
 }

@@ -1,0 +1,89 @@
+---
+import avatarImage from '../assets/avatar.png'
+import Base from '../layouts/Base.astro';
+import {DISCORD, EMAIL, GITHUB, LINKEDIN} from '../consts';
+---
+
+<Base title="Contact"
+      description="Want to collaborate on a project or just talk? Get in touch!"
+      image={avatarImage}>
+
+<div slot="sidebar-head" class="w-72">
+    <h1 class="text-2xl font-bold mb-3 text-center">Contact</h1>
+    <p class="mb-1 text-clamp">Want to collaborate on a project or just talk? Get in touch!</p>
+    <p class="text-clamp">I am most active on my personal email and Discord.</p>
+</div>
+
+<div slot="main" class="flex flex-col items-center">
+    <div class="flex flex-col gap-5 large:max-w-md">
+        <div>
+            <h1 class="text-2xl font-bold">
+                <i class="fa-brands fa-discord"></i>
+                Discord
+            </h1>
+            <p class="mb-1 text-clamp">This is where I'm most active during weekdays.</p>
+            <p class="mb-3 text-clamp">You can either add me as <code>@geri.dev</code> or join my personal server.</p>
+
+            <div class="flex flex-row gap-2 items-center">
+                <a class="button" href={DISCORD.USER_INVITE}>
+                    <i class="fa-solid fa-user-plus"></i>
+                    Add Friend
+                </a>
+
+                <a class="button" href={DISCORD.INVITE}>
+                    <i class="fa-brands fa-discord"></i>
+                    Discord Server
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <h1 class="text-2xl font-bold">
+                <i class="fa-solid fa-envelope"></i>
+                Email
+            </h1>
+            <p class="mb-1 text-clamp">For any business related inquiries, please use this. I try my best to reply
+                within a few days at most.</p>
+
+            <div class="flex flex-row gap-2 items-center">
+                <a class="button" href={`mailto:${EMAIL}`}>
+                    <i class="fa-solid fa-envelope"></i>
+                    Personal Email
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <h1 class="text-2xl font-bold">
+                <i class="fa-brands fa-github"></i>
+                GitHub
+            </h1>
+            <p class="mb-1 text-clamp">For issues or suggestions to any of my projects, please submit an issue on the relevant repository.</p>
+
+            <div class="flex flex-row gap-2 items-center">
+                <a class="button" href={GITHUB}>
+                    <i class="fa-brands fa-github"></i>
+                    GitHub
+                </a>
+            </div>
+        </div>
+
+
+        <div>
+            <h1 class="text-2xl font-bold">
+                <i class="fa-brands fa-linkedin"></i>
+                LinkedIn
+            </h1>
+            <p class="mb-1 text-clamp">For job-related matters, please contact me on LinkedIn!</p>
+
+            <div class="flex flex-row gap-2 items-center">
+                <a class="button" href={LINKEDIN}>
+                    <i class="fa-brands fa-linkedin"></i>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</Base>

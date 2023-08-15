@@ -19,7 +19,7 @@ import githubImage from '../assets/technologies/github.png';
 import Base from '../layouts/Base.astro';
 import Item from '../components/navbar/Item.astro';
 import Technology from '../components/misc/Technology.astro';
-import {DISCORD_INVITE, EMAIL, FAVOURITE_BAND, GITHUB, JOB, LINKEDIN} from '../consts';
+import {DISCORD, EMAIL, FAVOURITE_BAND, GITHUB, JOB, LINKEDIN} from '../consts';
 
 const today = new Date();
 const currentMonth = today.getMonth() + 1;
@@ -40,7 +40,7 @@ if (currentMonth < month || (currentMonth === month && today.getDate() < day)) {
     <div class="flex flex-row gap-5">
         <Item class="fa-brands fa-github" href={GITHUB}/>
         <Item class="fa-brands fa-linkedin" href={LINKEDIN}/>
-        <Item class="fa-brands fa-discord" href={DISCORD_INVITE}/>
+        <Item class="fa-brands fa-discord" href={DISCORD.INVITE}/>
         <Item class="fa-solid fa-envelope" href={`mailto:${EMAIL}`}/>
     </div>
     <span class="text-clamp bg-white text-white">Please help me decide what to put here</span>
