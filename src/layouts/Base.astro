@@ -17,7 +17,7 @@ const currentYear = new Date().getFullYear();
         <Navbar/>
 
         <div class="flex large:flex-row small:flex-col items-center large:w-full small:gap-5 large:gap-0">
-            <div class="large:ml-5 small:mt-5 large:mt-0 flex flex-col justify-between background rounded-lg flex-shrink-0 large:h-full large:w-auto small:w-full shadow-lg shadow-black z-10">
+            <div class="large:ml-5 small:mt-5 large:mt-0 flex flex-col items-center justify-between background rounded-lg flex-shrink-0 large:h-full large:w-auto small:w-full shadow-lg shadow-black z-10">
                 <div class="flex flex-col items-center rounded-lg mb-5 small:mt-5 large:mt-0 max-w-xs">
                     <Image class="max-w-xs w-max rounded-lg" src={image} alt={title} loading="eager"/>
                     <slot name="sidebar-head"/>
