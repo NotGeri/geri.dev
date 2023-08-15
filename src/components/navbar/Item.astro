@@ -1,21 +1,16 @@
 ---
-const {href, name, class: className, ...props} = Astro.props;
+const {href, name, newTab, disabled, class: className, ...props} = Astro.props;
 const {pathname} = Astro.url;
 const isActive = href === pathname || href === pathname.replace(/\/$/, '');
 ---
 
-<a href={href} title={name} class:list={[{active: isActive}]} {...props}>
-    <i class:list={[className]}></i>
-    <p class="text-xs small:hidden large:block">{name}</p>
-</a>
-<style>
-    a {
-        display: inline-block;
-        text-decoration: none;
-    }
-
-    a.active {
-        font-weight: bolder;
-        text-decoration: underline;
-    }
-</style>
+<span class={disabled ? 'cursor-not-allowed' : ''}>
+    <a href={href}
+       target={newTab ? '_blank' : '_self'}
+       title={name}
+       class={`${isActive ? 'accent font-bold underline' : 'inline-block no-underline'} ${disabled ? 'disabled pointer-events-none' : '' }`}
+       {...props}>
+        <i class:list={[className]}></i>
+        <p class="text-xs small:hidden large:block">{name}</p>
+    </a>
+</span>

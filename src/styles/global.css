@@ -145,7 +145,8 @@ p {
     }
 
     .disabled {
-        @apply background-accent-dark cursor-not-allowed;
+        @apply brightness-75 cursor-not-allowed;
+    }
 
     code, pre {
         @apply background-dark p-1 rounded text-white;

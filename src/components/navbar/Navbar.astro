@@ -1,19 +1,19 @@
 ---
 import Item from './Item.astro';
-import {DISCORD_INVITE, GITHUB, LINKEDIN} from '../../consts';
+import {DISCORD, GITHUB, LINKEDIN} from '../../consts';
 ---
 
 <header>
     <nav class="flex large:flex-col small:flex-row large:justify-center small:justify-between items-center text-center h-full background p-5 large:gap-10 small:gap-5 small:rounded-lg large:rounded-none">
         <Item class="fa-solid fa-user" href="/" name="About"/>
-        <Item class="fa-solid fa-blog" href="/blog" name="Blog"/>
+        <Item class="fa-solid fa-blog" disabled={true} href="/blog" name="Blog"/>
         <Item class="fa-solid fa-server" href="/archives" name="Archives"/>
 
-        <Item class="fa-brands fa-github" href={GITHUB} name="GitHub"/>
-        <Item class="fa-brands fa-linkedin" href={LINKEDIN} name="LinkedIn"/>
-        <Item class="fa-brands fa-discord" href={DISCORD_INVITE} name="Discord"/>
+        <Item class="fa-brands fa-github" newTab={true} href={GITHUB} name="GitHub"/>
+        <Item class="fa-brands fa-linkedin" newTab={true} href={LINKEDIN} name="LinkedIn"/>
+        <Item class="fa-brands fa-discord" newTab={true} href={DISCORD.INVITE} name="Discord"/>
 
-        <Item class="fa-solid fa-file" href="/cv" name="CV"/>
+        <Item class="fa-solid fa-file" disabled={true} href="/cv" name="CV"/>
         <Item class="fa-solid fa-handshake-simple" href="/contact" name="Contact"/>
     </nav>
 </header>
