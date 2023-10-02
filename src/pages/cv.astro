@@ -1,0 +1,15 @@
+---
+import Detail from '../layouts/Detail.astro';
+---
+
+<Detail title="Curriculum Vitae">
+    <div slot="content" class="flex flex-col items-center">
+        <p>Here is my CV as of October 2023.</p>
+        <p>Should you have any questions, feel free to <a class="underline" href="/contact">reach out!</a></p>
+        <a href="https://archive.geri.dev/cv.pdf" target="_blank" download="cv.pdf" class="button mt-3 w-fit block">
+            <i class="fa-solid fa-download"></i>
+            Download
+        </a>
+        <embed src="https://archive.geri.dev/cv.pdf" class="w-full h-196 mt-3" type="application/pdf">
+    </div>
+</Detail>
