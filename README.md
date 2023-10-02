@@ -34,7 +34,7 @@ As you can tell I am still very much learning frontend..
 - [ ] Technologies page
 - [x] Contacts page
 - [x] 404 page
-- [ ] CV
+- [x] CV
 - [ ] Basic blog (Markdown)
 - [ ] Dark/light theme toggle
 - [ ] Get the site to 100% in [Lighthouse](https://web.dev/measure/) categories
