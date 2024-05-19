@@ -59,3 +59,5 @@ rollup`
 
 Finally, if you want to build the site for production, use `npm run build` and you can find the final product
 under `dist/`.
+
+🦎
