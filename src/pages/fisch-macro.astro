@@ -1,0 +1,933 @@
+---
+import { Image } from 'astro:assets';
+import sc1 from '../assets/fisch-macro/sc-1.jpg';
+import sc2 from '../assets/fisch-macro/sc-2.jpg';
+
+const title = 'Fisch Macro — Secure Loader (IRUS V13)';
+const description = 'Roblox Fisch fishing macro loader — encrypted delivery, staged environment checks, and capacity‑gated distribution.';
+
+const faviconSvg = `
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>
+  <defs>
+    <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+      <stop stop-color='#22d3ee'/>
+      <stop offset='1' stop-color='#10b981'/>
+    </linearGradient>
+  </defs>
+  <rect width='32' height='32' rx='6' fill='url(#g)'/>
+  <path d='M7 16c0 0 6-6 12-6c4 0 6 2 6 6s-2 6-6 6c-6 0-12-6-12-6z' fill='#0b1524'/>
+  <circle cx='23' cy='16' r='1.8' fill='#22d3ee'/>
+</svg>`;
+const faviconHref = `data:image/svg+xml;utf8,${encodeURIComponent(faviconSvg)}`;
+---
+
+<html lang="en" class="h-full overflow-x-clip">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+    <title>{title}</title>
+    <meta name="description" content={description}/>
+    <meta property="og:title" content={title}/>
+    <meta property="og:description" content={description}/>
+    <meta property="og:type" content="website"/>
+    <link rel="icon" href={faviconHref}/>
+
+    <style>
+        .bg-noise::before {
+            content: "";
+            position: fixed;
+            inset: -50px;
+            pointer-events: none;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, .03) 1px, transparent 1px),
+            linear-gradient(to right, rgba(255, 255, 255, .03) 1px, transparent 1px);
+            background-size: 24px 24px, 24px 24px;
+            mix-blend-mode: overlay;
+            opacity: .4;
+            z-index: 0
+        }
+
+        @keyframes crt {
+            0%, 100% {
+                opacity: .98
+            }
+            50% {
+                opacity: 1
+            }
+        }
+
+        .crt {
+            animation: crt 6s infinite linear
+        }
+
+        .glitch {
+            position: relative
+        }
+
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            mix-blend-mode: lighten
+        }
+
+        .glitch::before {
+            transform: translate(2px, -1px);
+            clip-path: inset(0 0 55% 0);
+            color: rgb(110 231 183);
+            opacity: .32
+        }
+
+        .glitch::after {
+            transform: translate(-2px, 1px);
+            clip-path: inset(45% 0 0 0);
+            color: rgb(165 243 252);
+            opacity: .32
+        }
+
+        @keyframes ping-soft {
+            0% {
+                transform: scale(.6);
+                opacity: .9
+            }
+            70%, 100% {
+                transform: scale(1.6);
+                opacity: 0
+            }
+        }
+
+        .hb {
+            position: relative;
+            width: 12px;
+            height: 12px
+        }
+
+        .hb .core {
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background: #34d399
+        }
+
+        .hb .ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background: #34d399;
+            animation: ping-soft 1.8s cubic-bezier(0, 0, .2, 1) infinite
+        }
+    </style>
+</head>
+
+<body class="h-full bg-slate-950 text-slate-200 selection:bg-emerald-400/30 selection:text-emerald-100 bg-noise">
+<div class="relative min-h-screen isolate text-[18px] sm:text-[19px] leading-7 antialiased">
+    <div class="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl"></div>
+    <div class="pointer-events-none absolute top-48 -right-24 h-80 w-80 rounded-full bg-cyan-500/20 blur-3xl"></div>
+
+    <header class="relative z-10">
+        <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 py-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <img src={faviconHref} alt=""
+                     class="h-9 w-9 rounded-md ring-1 ring-emerald-300/30 shadow-lg shadow-emerald-500/20"/>
+                <div>
+                    <div class="text-lg tracking-widest text-emerald-300/90 uppercase">DeepCurrent</div>
+                    <div class="text-[12px] -mt-0.5 text-slate-400/80">Official Fisch Macro Loader</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+        <section class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 pt-4 pb-16">
+            <div class="rounded-lg border border-emerald-400/30 bg-emerald-500/10 px-4 py-3 text-center">
+                <p class="text-sm sm:text-base text-emerald-200">
+                    <strong class="tracking-wide">Roblox Fisch Fishing Macro</strong> — IRUS V13 / V12 / V11 loader.
+                    Encrypted, capacity‑gated, and widely used.
+                </p>
+            </div>
+
+            <div class="mt-6 space-y-6">
+                <div class="grid grid-cols-[minmax(0,1fr)_260px] gap-5 items-start">
+                    <!-- Quick Info -->
+                    <div class="rounded-2xl ring-1 ring-emerald-300/10 bg-slate-950 p-5 pt-0">
+                        <h3 class="text-lg font-semibold text-emerald-200">Quick Info</h3>
+                        <ul class="mt-2 text-slate-300/90 space-y-1.5 text-[17px]">
+                            <li>• Windows builds: V11 / V12 / V13 (IRUS).</li>
+                            <li>• Delivery is encrypted and versioned.</li>
+                            <li>• Hash and scan shown after verification.</li>
+                            <li>• AutoHotkey runtime auto-installs if missing.</li>
+                        </ul>
+                    </div>
+
+                    <figure class="justify-self-end">
+                        <div class="w-[260px] rounded-lg ring-1 ring-emerald-400/10 overflow-hidden bg-slate-900">
+                            <Image
+                                    src={sc1}
+                                    alt={`${title} — screenshot 1`}
+                                    width={260}
+                                    height={195}
+                                    class="block w-[260px] h-auto opacity-90"
+                                    loading="eager"
+                            />
+                        </div>
+                    </figure>
+                </div>
+
+                <div class="grid grid-cols-[260px_minmax(0,1fr)] gap-5 items-start">
+                    <figure class="justify-self-start">
+                        <div class="w-[260px] rounded-lg ring-1 ring-emerald-400/10 overflow-hidden bg-slate-900">
+                            <Image
+                                    src={sc2}
+                                    alt={`${title} — screenshot 2`}
+                                    width={260}
+                                    height={195}
+                                    class="block w-[260px] h-auto opacity-90"
+                            />
+                        </div>
+                    </figure>
+
+                    <!-- FAQ -->
+                    <div class="rounded-2xl ring-1 ring-emerald-300/10 bg-slate-950 p-5 pt-0">
+                        <h3 class="text-lg font-semibold text-emerald-200">FAQ</h3>
+                        <details class="mt-2 text-sm text-slate-300/90">
+                            <summary class="cursor-pointer py-1.5">Why is delivery rate-limited?</summary>
+                            <p class="mt-1 text-slate-400">To reduce detection surface and bandwidth spikes during peak
+                                use.</p>
+                        </details>
+                        <details class="text-sm text-slate-300/90">
+                            <summary class="cursor-pointer py-1.5">Do I need to tweak Roblox settings?</summary>
+                            <p class="mt-1 text-slate-400">Windowed mode and consistent resolution help with
+                                stability.</p>
+                        </details>
+                        <details class="text-sm text-slate-300/90">
+                            <summary class="cursor-pointer py-1.5">Will the script install AutoHotkey?</summary>
+                            <p class="mt-1 text-slate-400">Yes. A minimal runtime is prepared and installed if
+                                missing.</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Loader / Wizard -->
+            <div class="mt-6 rounded-2xl ring-1 ring-emerald-300/20 bg-gradient-to-b from-slate-900 to-slate-950 shadow-xl shadow-emerald-500/10">
+                <div class="p-5 border-b border-emerald-300/10">
+                    <div class="flex items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-xl font-semibold text-emerald-200">Secure Loader</h2>
+                            <p class="mt-1 text-base text-slate-400">Windows • Encrypted delivery</p>
+                        </div>
+                        <span class="rounded border border-emerald-300/30 text-[11px] uppercase tracking-widest px-2 py-1 text-emerald-200/90">Blazing&nbsp;Fast</span>
+                    </div>
+
+                    <div id="verSection" class="mt-4">
+                        <div class="grid grid-cols-3 gap-2">
+                            {['V11 Legacy', 'V12 Xan', 'V13 IRUS'].map((label, idx) => (
+                                    <label class="relative">
+                                        <input type="radio" name="ver" value={label} class="peer sr-only"
+                                               checked={idx === 2}/>
+                                        <div class="w-full rounded-lg border px-4 py-2.5 text-center text-base
+                                  border-emerald-300/20 text-slate-300/90
+                                  peer-checked:border-emerald-300/60 peer-checked:text-emerald-200
+                                  peer-checked:bg-emerald-400/5 cursor-pointer">
+                                            {label}
+                                        </div>
+                                    </label>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <button id="startBtn"
+                                class="w-full rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-60 disabled:cursor-not-allowed text-slate-900 text-lg font-semibold px-5 py-3">
+                            Download Macro
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-5 space-y-6">
+                    <div id="preSection" class="hidden">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-base font-medium text-slate-200">Environment Pre‑Checks</h3>
+                            <span id="precheckState" class="text-[11px] text-slate-400">Idle</span>
+                        </div>
+                        <div class="mt-2 space-y-2">
+                            {[
+                                'Roblox Guard handshake',
+                                'Process isolation & focus',
+                                'Macro cloaking (process hollowing)',
+                                'Fishdex index sync',
+                                'AutoHotkey runtime (auto‑install)',
+                            ].map((row) => (
+                                    <div class="rounded-md bg-slate-900/60 border border-slate-700/60 px-3.5 py-2.5">
+                                        <div class="flex items-center justify-between text-[13px]">
+                                            <span class="text-slate-300">{row}</span>
+                                            <span class="status text-slate-500">pending</span>
+                                        </div>
+                                        <div class="mt-2 h-2.5 rounded bg-slate-800 overflow-hidden">
+                                            <div class="bar h-full w-0 bg-gradient-to-r from-cyan-400 to-emerald-400 transition-[width] duration-100 ease-linear"></div>
+                                        </div>
+                                    </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    <div id="tunnelSection" class="hidden">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-base font-medium text-slate-200">Encrypted Tunnel</h3>
+                            <span id="tunnelState" class="text-[11px] text-slate-400">Locked</span>
+                        </div>
+                        <div class="mt-2 rounded-md bg-slate-900/60 border border-slate-700/60 px-3.5 py-2.5">
+                            <div class="text-[13px] text-slate-300/90">Protocol: AES‑ROD‑256 • Route: Subsurface IX
+                            </div>
+                            <div class="mt-2 h-2.5 rounded bg-slate-800 overflow-hidden">
+                                <div id="tunnelBar"
+                                     class="h-full w-0 bg-gradient-to-r from-cyan-400 to-emerald-400 transition-[width] duration-100 ease-linear"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tasksSection" class="hidden space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-base font-medium text-slate-200">Human Verification</h3>
+                            <span id="taskState" class="text-[11px] text-slate-400">Step 1 of 4</span>
+                        </div>
+
+                        <div id="task1" class="rounded-md bg-slate-900/60 border border-slate-700/60 p-4 opacity-60 pointer-events-none">
+                            <div class="flex items-center gap-2">
+                                <span class="rounded bg-emerald-500/10 text-emerald-300 px-2 py-0.5 text-[11px]">Task 1</span>
+                                <span class="text-[13px] text-slate-300">Type the phrase exactly (case‑sensitive).</span>
+                                <span id="t1Badge" class="ml-auto text-[11px] text-slate-500">Locked</span>
+                            </div>
+                            <p class="mt-2 text-[13px] text-slate-400">
+                                Phrase:
+                                <code id="attPhrase" class="text-emerald-300 font-mono break-all"></code>
+                            </p>
+                            <input id="attInput" type="text" inputmode="latin" autocomplete="off" spellcheck="false"
+                                   onpaste="return false;" ondrop="return false;" oncontextmenu="return false;"
+                                   class="mt-2 w-full rounded-md bg-slate-950 border border-slate-700 px-3 py-2 text-[16px] text-slate-100 placeholder-slate-500"
+                                   placeholder="Type it here exactly…"/>
+                            <div class="mt-2 text-[12px] text-slate-400">Match: <span id="attMatch">0%</span></div>
+                        </div>
+
+                        <div id="task2"
+                             class="rounded-md bg-slate-900/60 border border-slate-700/60 p-4 opacity-60 pointer-events-none">
+                            <div class="flex items-center gap-2">
+                                <span class="rounded bg-emerald-500/10 text-emerald-300 px-2 py-0.5 text-[11px]">Task 2</span>
+                                <span class="text-[13px] text-slate-300">Press and hold until stabilized (5 seconds).</span>
+                                <span id="t2Badge" class="ml-auto text-[11px] text-slate-500">Locked</span>
+                            </div>
+                            <button id="holdBtn"
+                                    class="mt-2 rounded-md border border-emerald-300/30 px-4 py-2 text-base text-emerald-200/90">
+                                Hold to stabilize
+                            </button>
+                            <div class="mt-2 h-3 rounded bg-slate-800 overflow-hidden">
+                                <div id="holdBar"
+                                     class="h-full w-0 bg-gradient-to-r from-cyan-400 to-emerald-400 transition-[width] duration-100 ease-linear"></div>
+                            </div>
+                            <div class="mt-1 text-[12px] text-slate-400">
+                                Progress: <span id="holdTime">0.0</span>s / 5.0s
+                            </div>
+                        </div>
+
+                        <div id="task3"
+                             class="rounded-md bg-slate-900/60 border border-slate-700/60 p-4 opacity-60 pointer-events-none">
+                            <div class="flex items-center gap-2">
+                                <span class="rounded bg-emerald-500/10 text-emerald-300 px-2 py-0.5 text-[11px]">Task 3</span>
+                                <span class="text-[13px] text-slate-300">Type the animal visible here: 🦆</span>
+                                <span id="t3Badge" class="ml-auto text-[11px] text-slate-500">Pending</span>
+                            </div>
+                            <input id="duckInput" type="text" inputmode="latin" autocomplete="off" spellcheck="false"
+                                   onpaste="return false;" ondrop="return false;" oncontextmenu="return false;"
+                                   class="mt-2 w-full rounded-md bg-slate-950 border border-slate-700 px-3 py-2 text-[16px] text-slate-100 placeholder-slate-500"
+                                   placeholder="Type it here…"/>
+                            <div class="mt-2 text-[12px] text-slate-400">Match: <span id="duckMatch">0%</span></div>
+                        </div>
+
+                        <div id="task4"
+                             class="rounded-md bg-slate-900/60 border border-slate-700/60 p-4 opacity-60 pointer-events-none">
+                            <div class="flex items-center gap-2">
+                                <span class="rounded bg-emerald-500/10 text-emerald-300 px-2 py-0.5 text-[11px]">Task 4</span>
+                                <span class="text-[13px] text-slate-300">Align slider to target and hold for 1.5s.</span>
+                                <span id="t4Badge" class="ml-auto text-[11px] text-slate-500">Locked</span>
+                            </div>
+                            <div class="mt-2 text-[12px] text-slate-400">
+                                Target: <span id="targetVal" class="text-emerald-300"></span> (±<span
+                                    id="tolVal">2</span>)
+                            </div>
+                            <input id="alignSlider" type="range" min="0" max="100" value="0" step="1"
+                                   class="mt-2 w-full accent-emerald-400"/>
+                            <div class="mt-1 text-[12px] text-slate-400">
+                                Current: <span id="currVal">0</span>
+                                <span id="lockHint" class="ml-2 text-slate-500">(hold steady…)</span>
+                            </div>
+                            <div class="mt-2 h-2.5 rounded bg-slate-800 overflow-hidden">
+                                <div id="lockBar"
+                                     class="h-full w-0 bg-gradient-to-r from-cyan-400 to-emerald-400 transition-[width] duration-100 ease-linear"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="terminalWrap" class="hidden rounded-xl bg-slate-950 border border-emerald-300/20">
+                        <div class="flex items-center justify-between px-3.5 py-2.5 border-b border-emerald-300/10">
+                            <div class="flex items-center gap-2">
+                                <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/70"></span>
+                                <span class="text-[12px] text-emerald-200">IRUS Console</span>
+                            </div>
+                            <button id="clearLog" class="text-sm text-slate-400 hover:text-slate-200">clear console
+                            </button>
+                        </div>
+                        <div id="terminal"
+                             class="crt h-52 overflow-y-auto text-[12px] leading-relaxed px-3.5 py-2.5 font-mono text-emerald-200/90"></div>
+                    </div>
+
+                    <div id="capacityWrap" class="hidden space-y-4">
+                        <div class="rounded-xl border border-amber-400/30 bg-amber-500/10 p-4">
+                            <div class="flex items-center justify-between gap-3">
+                                <h3 class="text-xl font-semibold text-amber-300">Queue is full — delivery at
+                                    capacity</h3>
+                                <span id="capBadge" class="text-[12px] text-amber-300/90">rate‑limited</span>
+                            </div>
+                            <p class="mt-1 text-amber-200/90 text-[16px]">
+                                Finish the break and complete the timer to unlock <strong>Priority Queue</strong>.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 text-[15px]">
+                            <div class="rounded-md bg-slate-900/60 border border-slate-700/60 p-3">
+                                <div class="flex items-center gap-2 text-slate-400">
+                                    <span class="hb"><span class="ring"></span><span class="core"></span></span>
+                                    <span>Concurrent Users</span>
+                                </div>
+                                <div class="mt-1 text-slate-200 text-2xl flex items-center gap-2">
+                                    <span id="concurrent">—</span>
+                                </div>
+                            </div>
+                            <div class="rounded-md bg-slate-900/60 border border-slate-700/60 p-3">
+                                <div class="flex items-center gap-2 text-slate-400">
+                                    <span class="hb"><span class="ring"></span><span class="core"></span></span>
+                                    <span>Your Queue Position</span>
+                                </div>
+                                <div class="mt-1 text-slate-200 text-2xl flex items-center gap-2">
+                                    <span id="queuePos">—</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-1 h-3 rounded bg-slate-800 overflow-hidden">
+                            <div id="queueBar"
+                                 class="h-full w-0 bg-gradient-to-r from-cyan-400 to-emerald-400 transition-[width] duration-300 ease-linear"></div>
+                        </div>
+
+                        <div class="rounded-xl border border-emerald-300/20 bg-slate-950 p-4">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-medium text-emerald-200">Quick Break (recommended)</h3>
+                                <span id="breakState" class="text-[12px] text-slate-400">00:00 / 03:00</span>
+                            </div>
+
+                            <div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-3 text-[15px]" id="relaxChecklist">
+                                {[
+                                    'Open a window for fresh air',
+                                    'Drink some water',
+                                    'Look 20 ft away for 20s',
+                                    'Stand and stretch',
+                                    'Posture reset',
+                                    'Take 5 slow breaths',
+                                    'Blink 20 times',
+                                    'Wrist/forearm stretch',
+                                    'Refill your bottle',
+                                ].map((label) => (
+                                        <label class="flex items-center gap-2 rounded-md border border-slate-700/60 bg-slate-900/60 p-3">
+                                            <input data-step type="checkbox"
+                                                   class="h-5 w-5 rounded border-slate-600 bg-slate-800"/>
+                                            <span>{label}</span>
+                                        </label>
+                                ))}
+                            </div>
+
+                            <!-- Row 1: Start/Reset -->
+                            <div class="mt-4 flex flex-wrap items-center gap-3">
+                                <button id="startBreak"
+                                        class="rounded-lg bg-emerald-500 hover:bg-emerald-400 disabled:opacity-60 disabled:cursor-not-allowed text-slate-900 text-lg font-semibold px-5 py-3"
+                                        disabled>
+                                    Start 3‑minute timer
+                                </button>
+                                <button id="resetBreak"
+                                        class="rounded-lg border border-emerald-300/40 px-5 py-3 text-lg text-emerald-200/90 hover:border-emerald-300/60">
+                                    Reset
+                                </button>
+                                <button id="priorityBtn"
+                                        class="rounded-lg bg-gradient-to-r from-fuchsia-500 via-purple-500 to-violet-500 text-white text-lg font-semibold px-6 py-3 shadow-lg shadow-fuchsia-500/20 hover:shadow-fuchsia-500/30 disabled:opacity-60 disabled:cursor-not-allowed"
+                                        disabled
+                                        title="Unlocks when timer completes">
+                                    Priority Queue
+                                </button>
+                            </div>
+
+                            <!-- Timer -->
+                            <div class="mt-4 flex flex-wrap items-center gap-4">
+                                <div id="bigTimer" class="font-mono text-5xl sm:text-6xl text-emerald-300">00:00
+                                </div>
+                                <div id="breakMsg" class="mt-1 text-[13px] text-slate-400"></div>
+                            </div>
+                        </div>
+
+                        <p id="legal" class="text-[12px] text-slate-500">
+                            Distribution is rate‑limited. Delivery may be deferred during peak load.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    const $ = (sel, root = document) => root.querySelector(sel);
+    const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    const RICKROLL_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+
+    const term = $('#terminal');
+    const log = (msg) => {
+        if (!term) return;
+        const d = document.createElement('div');
+        d.textContent = msg;
+        term.appendChild(d);
+        term.scrollTop = term.scrollHeight;
+    };
+
+    const startBtn = $('#startBtn');
+    const clearLog = $('#clearLog');
+
+    const terminalWrap = $('#terminalWrap');
+    const preSection = $('#preSection');
+    const tunnelSection = $('#tunnelSection');
+    const tasksSection = $('#tasksSection');
+    const capacityWrap = $('#capacityWrap');
+
+    const precheckState = $('#precheckState');
+    const tunnelState = $('#tunnelState');
+    const taskState = $('#taskState');
+
+    const statusEls = $$('.status');
+    const bars = $$('.bar');
+    const tunnelBar = $('#tunnelBar');
+
+    const t1 = $('#task1'), t2 = $('#task2'), t3 = $('#task3'), t4 = $('#task4');
+    const t1Badge = $('#t1Badge'), t2Badge = $('#t2Badge'), t3Badge = $('#t3Badge'), t4Badge = $('#t4Badge');
+    const attPhraseEl = $('#attPhrase'), attInput = $('#attInput'), attMatch = $('#attMatch');
+    const holdBtn = $('#holdBtn'), holdBar = $('#holdBar'), holdTime = $('#holdTime');
+    const duckInput = $('#duckInput'), duckMatch = $('#duckMatch');
+    const targetVal = $('#targetVal'), tolVal = $('#tolVal'), alignSlider = $('#alignSlider'),
+        currVal = $('#currVal'), lockBar = $('#lockBar'), lockHint = $('#lockHint');
+
+    const concurrent = $('#concurrent'), queuePos = $('#queuePos'), queueBar = $('#queueBar');
+    const relaxChecklist = $('#relaxChecklist');
+    const startBreak = $('#startBreak'), resetBreak = $('#resetBreak'), priorityBtn = $('#priorityBtn');
+    const bigTimer = $('#bigTimer');
+    const breakState = $('#breakState');
+    const breakMsg = $('#breakMsg');
+
+    let phrase = '', t1Done = false, t2Done = false, t3Done = false, t4Done = false;
+    let holding = false, held = 0, holdTimer, target = 50, tolerance = 2, lockStart = null;
+    let breakTimer = null, breakElapsed = 0, breakGoal = 180;
+    let flowActive = false;
+
+    attInput?.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'v') e.preventDefault();
+        if (e.shiftKey && e.key === 'Insert') e.preventDefault();
+    });
+
+    const hideAll = () => {
+        preSection.classList.add('hidden');
+        tunnelSection.classList.add('hidden');
+        tasksSection.classList.add('hidden');
+        terminalWrap.classList.add('hidden');
+        capacityWrap.classList.add('hidden');
+    };
+    const showAutoSections = () => {
+        preSection.classList.remove('hidden');
+        tunnelSection.classList.remove('hidden');
+        tasksSection.classList.remove('hidden');
+        terminalWrap.classList.remove('hidden');
+    };
+
+    function resetWizard() {
+        hideAll();
+        precheckState.textContent = 'Idle';
+        tunnelState.textContent = 'Locked';
+        taskState.textContent = 'Step 1 of 4';
+        bars.forEach((b) => b.style.width = '0%');
+        statusEls.forEach((el) => {
+            el.textContent = 'pending';
+            el.className = 'status text-slate-500';
+        });
+        tunnelBar.style.width = '0%';
+        term && (term.innerHTML = '');
+
+        t1Done = t2Done = t3Done = false;
+        t1.classList.add('opacity-60', 'pointer-events-none');
+        t2.classList.add('opacity-60', 'pointer-events-none');
+        t3.classList.add('opacity-60', 'pointer-events-none');
+        t1Badge.textContent = 'Locked';
+        t1Badge.className = 'ml-auto text-[11px] text-slate-500';
+        t2Badge.textContent = 'Locked';
+        t2Badge.className = 'ml-auto text-[11px] text-slate-500';
+        t3Badge.textContent = 'Locked';
+        t3Badge.className = 'ml-auto text-[11px] text-slate-500';
+        t4Badge.textContent = 'Locked';
+        t4Badge.className = 'ml-auto text-[11px] text-slate-500';
+
+        phrase = genPhrase();
+        attPhraseEl.textContent = phrase;
+        attInput.value = '';
+        attMatch.textContent = '0%';
+
+        holdBar.style.width = '0%';
+        holdTime.textContent = '0.0';
+        holding = false;
+        held = 0;
+        clearInterval(holdTimer);
+
+        target = rand(15, 85);
+        tolerance = rand(2, 3);
+        targetVal.textContent = target;
+        tolVal.textContent = tolerance;
+        alignSlider.value = 0;
+        currVal.textContent = '0';
+        lockBar.style.width = '0%';
+        lockHint.textContent = '(hold steady…)';
+        lockStart = null;
+
+        stopBreak();
+        queueBar.style.width = '0%';
+        concurrent.textContent = '—';
+        queuePos.textContent = '—';
+        breakState.textContent = '00:00 / 03:00';
+        bigTimer.textContent = '00:00';
+        breakMsg.textContent = '';
+        $$('input[data-step]', relaxChecklist).forEach(cb => {
+            cb.checked = false;
+        });
+        startBreak.disabled = true;
+        priorityBtn.disabled = true;
+    }
+
+    function genPhrase() {
+        const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+        const chunk = (n) => Array.from({ length: n }, () => chars[rand(0, chars.length - 1)]).join('');
+        return `IRUS-${chunk(5)}-${chunk(5)}-${chunk(5)}`;
+    }
+
+    startBtn?.addEventListener('click', async () => {
+        if (flowActive) return;
+        flowActive = true;
+        startBtn.disabled = true;
+
+        resetWizard();
+        showAutoSections();
+        await runPrechecks();
+        await runTunnel();
+        initTasks();
+    });
+
+    clearLog?.addEventListener('click', () => (term.innerHTML = ''));
+
+    async function runPrechecks() {
+        precheckState.textContent = 'Running…';
+        log('Initializing IRUS Secure Loader…');
+        await sleep(400);
+        log('Detecting Roblox install… found.');
+        await sleep(350);
+        log('Preparing AutoHotkey runtime (auto‑install)…');
+        await sleep(300);
+
+        for (let i = 0; i < bars.length; i++) await fillBar(bars[i], statusEls[i]);
+        precheckState.textContent = 'Passed*';
+        log('Pre‑checks complete.');
+    }
+
+    function fillBar(bar, statusEl) {
+        return new Promise((resolve) => {
+            statusEl.textContent = 'checking…';
+            let w = 0;
+            const t = setInterval(() => {
+                w += Math.random() * 8;
+                if (w >= 100) {
+                    w = 100;
+                    clearInterval(t);
+                    statusEl.textContent = 'ok';
+                    statusEl.className = 'status text-emerald-300';
+                    resolve();
+                }
+                bar.style.width = w + '%';
+            }, rand(60, 140));
+        });
+    }
+
+    async function runTunnel() {
+        tunnelState.textContent = 'Negotiating…';
+        log('Opening encrypted tunnel (AES‑ROD‑256)…');
+        await sleep(500);
+        await fillTunnel();
+        tunnelState.textContent = 'Established';
+        log('Route locked via Subsurface IX; latency stabilized.');
+        t1.classList.remove('opacity-60', 'pointer-events-none');
+        t1Badge.textContent = 'Ready';
+        t1Badge.className = 'ml-auto text-[11px] text-cyan-300';
+    }
+
+    function fillTunnel() {
+        return new Promise((resolve) => {
+            let w = 0;
+            const t = setInterval(() => {
+                w += Math.random() * 7;
+                if (w >= 100) {
+                    w = 100;
+                    clearInterval(t);
+                    resolve();
+                }
+                tunnelBar.style.width = w + '%';
+            }, rand(70, 120));
+        });
+    }
+
+    function initTasks() {
+        taskState.textContent = 'Step 1 of 4';
+
+        terminalWrap.classList.remove('hidden');
+        (async function flavor() {
+            const lines = ['Loading timing profiles…', 'Recomputing offsets…', 'Stabilizing cloak heartbeat…', 'Hashing profile bundle…', 'Checking delivery window…'];
+            let k = 0;
+            while (!t3Done) {
+                await sleep(rand(900, 1600));
+                log(lines[k++ % lines.length]);
+            }
+        })();
+
+        attInput.oninput = () => {
+            const v = attInput.value;
+            const match = similarity(v, phrase);
+            attMatch.textContent = Math.round(match * 100) + '%';
+            if (v === phrase) {
+                t1Done = true;
+                t1Badge.textContent = 'Done';
+                t1Badge.className = 'ml-auto text-[11px] text-emerald-300';
+                t2.classList.remove('opacity-60', 'pointer-events-none');
+                t2Badge.textContent = 'Ready';
+                t2Badge.className = 'ml-auto text-[11px] text-cyan-300';
+                taskState.textContent = 'Step 2 of 4';
+            }
+        };
+
+        holdBtn.onpointerdown = (e) => {
+            e.preventDefault();
+            holding = true;
+            holdBtn.setPointerCapture?.(e.pointerId);
+            if (t2Done) return;
+            clearInterval(holdTimer);
+            holdTimer = setInterval(() => {
+                if (!holding) return;
+                held += 100;
+                const pct = Math.min(100, (held / 5000) * 100);
+                holdBar.style.width = pct + '%';
+                holdTime.textContent = (held / 1000).toFixed(1);
+                if (held >= 5000) {
+                    clearInterval(holdTimer);
+                    t2Done = true;
+                    t2Badge.textContent = 'Done';
+                    t2Badge.className = 'ml-auto text-[11px] text-emerald-300';
+                    t3.classList.remove('opacity-60', 'pointer-events-none');
+                    t3Badge.textContent = 'Ready';
+                    t3Badge.className = 'ml-auto text-[11px] text-cyan-300';
+                    taskState.textContent = 'Step 3 of 4';
+                }
+            }, 100);
+        };
+        const cancelHold = () => {
+            holding = false;
+            if (t2Done) return;
+            clearInterval(holdTimer);
+            const start = held, t0 = performance.now();
+            const decay = () => {
+                if (holding || t2Done) return;
+                const elapsed = performance.now() - t0;
+                const left = Math.max(0, start - elapsed * 1.2);
+                held = left;
+                holdBar.style.width = Math.min(100, (held / 5000) * 100) + '%';
+                holdTime.textContent = (held / 1000).toFixed(1);
+                if (held > 0 && !holding) requestAnimationFrame(decay);
+            };
+            requestAnimationFrame(decay);
+        };
+        holdBtn.onpointerup = cancelHold;
+        holdBtn.onpointercancel = cancelHold;
+        holdBtn.onpointerleave = cancelHold;
+
+        duckInput.oninput = () => {
+            const duck = 'duck';
+            const v = duckInput.value;
+            const match = similarity(v, duck);
+            duckMatch.textContent = Math.round(match * 100) + '%';
+            if (v === duck) {
+                t3Done = true;
+                t3Badge.textContent = 'Done';
+                t3Badge.className = 'ml-auto text-[11px] text-emerald-300';
+                t4Badge.textContent = 'Ready';
+                t4.classList.remove('opacity-60', 'pointer-events-none');
+                t4Badge.className = 'ml-auto text-[11px] text-cyan-300';
+                taskState.textContent = 'Step 4 of 4';
+            }
+        };
+
+        alignSlider.oninput = () => {
+            const val = Number(alignSlider.value);
+            currVal.textContent = String(val);
+            const within = Math.abs(val - target) <= tolerance;
+            if (within) {
+                if (!lockStart) lockStart = performance.now();
+            } else {
+                lockStart = null;
+                lockBar.style.width = '0%';
+                lockHint.textContent = '(hold steady…)';
+            }
+        };
+
+        (async function monitor() {
+            while (!t4Done) {
+                await sleep(120);
+                if (lockStart) {
+                    const elapsed = performance.now() - lockStart;
+                    const pct = Math.min(100, (elapsed / 1500) * 100);
+                    lockBar.style.width = pct + '%';
+                    lockHint.textContent = pct >= 100 ? 'locked' : '(holding…)';
+                    if (pct >= 100) {
+                        t4Done = true;
+                        t4Badge.textContent = 'Done';
+                        t4Badge.className = 'ml-auto text-[11px] text-emerald-300';
+                        taskState.textContent = 'All steps complete';
+                        finishFlow();
+                        break;
+                    }
+                }
+            }
+        })();
+    }
+
+    async function downloadMacro() {
+        log('Downloading macro...');
+        await sleep(3000);
+        window.location.href = RICKROLL_URL;
+    }
+
+    function similarity(a, b) {
+        let i = 0;
+        while (i < a.length && i < b.length && a[i] === b[i]) i++;
+        return i / b.length;
+    }
+
+    async function finishFlow() {
+        log('Human verification complete.');
+        await sleep(450);
+        log('Bundling IRUS payload…');
+        await sleep(900);
+        log('Allocating delivery slot…');
+
+        capacityWrap.classList.remove('hidden');
+        terminalWrap.classList.remove('hidden');
+        initQueueFluctuation();
+
+        const checkReady = () => {
+            const allChecked = $$('input[data-step]', relaxChecklist).every(cb => cb.checked);
+            startBreak.disabled = !allChecked || Boolean(breakTimer);
+        };
+        relaxChecklist.addEventListener('change', checkReady);
+        checkReady();
+    }
+
+    let ccVal = rand(15000, 16500);
+    let qpVal = rand(200, 1000);
+    const originalQp = qpVal;
+
+    function initQueueFluctuation() {
+        concurrent.textContent = ccVal.toLocaleString();
+        queuePos.textContent = qpVal.toLocaleString();
+        queueBar.style.width = '0%';
+
+        setInterval(() => {
+            ccVal += rand(-10, 12);
+            ccVal = Math.max(14000, Math.min(17500, ccVal));
+            concurrent.textContent = ccVal.toLocaleString();
+        }, 6000);
+
+        setInterval(() => {
+            const drift = [-1, 0][rand(0, 1)];
+            qpVal = Math.max(0, qpVal + drift);
+            queuePos.textContent = qpVal.toLocaleString();
+            queueBar.style.width = (100 - qpVal / originalQp * 100).toFixed(1) + '%';
+            if (qpVal === 1) {
+                log('You are first in line!');
+            }
+            if (qpVal === 0) {
+                downloadMacro();
+            }
+        }, 4500);
+    }
+
+    breakTimer = null;
+    breakElapsed = 0;
+    breakGoal = 180;
+
+    function fmt(t) {
+        const m = String(Math.floor(t / 60)).padStart(2, '0');
+        const s = String(t % 60).padStart(2, '0');
+        return `${m}:${s}`;
+    }
+
+    function stopBreak() {
+        clearInterval(breakTimer);
+        breakTimer = null;
+        breakElapsed = 0;
+    }
+
+    startBreak?.addEventListener('click', () => {
+        if (breakTimer) return;
+        startBreak.disabled = true;
+        priorityBtn.disabled = true;
+        breakMsg.textContent = 'Timer running. Priority unlocks when complete.';
+        breakTimer = setInterval(() => {
+            breakElapsed++;
+            bigTimer.textContent = fmt(breakElapsed);
+            breakState.textContent = `${fmt(breakElapsed)} / ${fmt(breakGoal)}`;
+            if (breakElapsed >= breakGoal) {
+                clearInterval(breakTimer);
+                breakTimer = null;
+                breakState.textContent = `${fmt(breakGoal)} / ${fmt(breakGoal)}`;
+                priorityBtn.disabled = false;
+                breakMsg.textContent = 'Timer complete. Priority Queue unlocked.';
+            }
+        }, 1000);
+    });
+
+    resetBreak?.addEventListener('click', () => {
+        stopBreak();
+        bigTimer.textContent = '00:00';
+        breakState.textContent = '00:00 / 03:00';
+        priorityBtn.disabled = true;
+        breakMsg.textContent = '';
+        const allChecked = $$('input[data-step]', relaxChecklist).every(cb => cb.checked);
+        startBreak.disabled = !allChecked;
+    });
+
+    priorityBtn?.addEventListener('click', async () => {
+        if (!priorityBtn.disabled) {
+            log('Priority Queue granted. Preparing secure handoff…');
+            downloadMacro();
+        }
+    });
+
+    resetWizard();
+</script>
+</body>
+</html>
